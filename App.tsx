@@ -1,7 +1,7 @@
 import React from 'react';
 import {NativeBaseProvider} from 'native-base';
 import {NavigationContainer} from '@react-navigation/native';
-import FooterTabs from './layout/FooterTab';
+import FooterTabs from './src/layout/FooterTab';
 import 'react-native-gesture-handler';
 
 import {Provider} from 'react-redux';

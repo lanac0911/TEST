@@ -23,7 +23,7 @@ import {
   setTabIndex,
   selectTabIndex,
   selectTabRoutes,
-} from '../../store/tabRoute';
+} from '../../../store/tabRoute';
 
 const IndexPage = () => {
   const dispatch = useDispatch();

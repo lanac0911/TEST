@@ -5,7 +5,8 @@ import {View, useTheme} from 'native-base';
 import { Text } from 'react-native';
 import React from 'react';
 
-import OrderScreen from '../Screen/TakeOrder/OrderScreen';
+import OrderScreen from '../src/Screen/TakeOrder/OrderScreen';
+// import OrderScreen from '../Screen/TakeOrder/OrderScreen';
 interface FooterTabsProps {}
 
 const RUNScreen = () => {
