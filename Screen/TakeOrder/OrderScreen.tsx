@@ -13,7 +13,7 @@ const OrderScreen = () => {
         gestureEnabled: true,
         gestureDirection: 'horizontal',
       }}>
-      <NVStack.Screen name="MainPage" component={IndexPage} />
+      <NVStack.Screen name="IndexPage" component={IndexPage} />
       <NVStack.Screen name="OrderDetail" component={OrderDetail} />
     </NVStack.Navigator>
   );

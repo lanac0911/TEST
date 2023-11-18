@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import tabRouteSlice from '../store/tabRouteSlice';
+// import tabRouteSlice from '../store/tabRouteSlice';
+import tabSlice from '../store/tabRoute';
 
 export const store = configureStore({
   reducer: {
-    tabRoutes: tabRouteSlice,
+    tabRoutes: tabSlice.tabRouteReducer,
+    tabIndex: tabSlice.tabIndexReducer,
   },
 });
 export default store;

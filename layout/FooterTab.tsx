@@ -4,7 +4,6 @@ import {Platform} from 'react-native';
 import {View, useTheme} from 'native-base';
 import { Text } from 'react-native';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import OrderScreen from '../Screen/TakeOrder/OrderScreen';
 interface FooterTabsProps {}
