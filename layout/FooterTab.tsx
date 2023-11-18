@@ -34,7 +34,7 @@ const FooterTabs: React.FC<FooterTabsProps> = () => {
           tabBarActiveTintColor: colors.darkBlue[400],
           tabBarInactiveTintColor: colors.gray[200],
           tabBarStyle: {
-            height: Platform.OS === 'android' ? 80 : 110,
+            height: Platform.OS === 'android' ? 80 : 100,
             paddingBottom: Platform.OS === 'android' ? sizes[3] : sizes[10],
             paddingTop: sizes[2],
           },

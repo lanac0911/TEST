@@ -4,6 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import FooterTabs from './layout/FooterTab';
 import 'react-native-gesture-handler';
 
+import {Provider} from 'react-redux';
+import store from './redux/store';
+
 // import {Text} from 'react-native';
 const config = {
   dependencies: {
@@ -13,14 +16,15 @@ const config = {
 
 function App(): JSX.Element {
   return (
-    <NavigationContainer>
-      {/* <NativeBaseProvider> */}
-      <NativeBaseProvider config={config}>
-        <FooterTabs />
-      </NativeBaseProvider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        {/* <NativeBaseProvider> */}
+        <NativeBaseProvider config={config}>
+          <FooterTabs />
+        </NativeBaseProvider>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
 export default App;
-

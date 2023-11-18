@@ -35,9 +35,12 @@ const OrderDetail = () => {
   const renderDeliverItem = ({ item }) => (
     <Stack 
       p={2}
-      pl={5} pr={5} 
-      borderBottomWidth={1} 
-      borderBottomColor="gray.200"
+      pl={5} pr={5}
+      ml={3} mr={3}
+      borderWidth={1}
+      borderColor="gray.300"
+      // borderBottomWidth={1} 
+      // borderBottomColor="gray.200"
       direction={'row'}
       alignItems="center"
       justifyContent="center"
@@ -67,17 +70,18 @@ const OrderDetail = () => {
 
   const renderReItem = ({ item }) => (
     <Stack 
-      p={2}
-      pl={5} pr={5} 
-      borderBottomWidth={1} 
-      borderBottomColor="gray.200"
+      p={3}
+      pl={5} pr={5}
+      ml={3} mr={3}
+      borderWidth={1}
+      borderColor="gray.300"
       direction={'col'}
       alignItems="stretch"
       justifyContent="center"
     >
       <Stack direction={'row'}>
         <Box w={'40%'}  >
-          <Text fontSize={'lg'} margin={1}>{item.kg} kg</Text>
+          <Text fontSize={'xl'} margin={1}>{item.kg} kg</Text>
             
         </Box>
 
@@ -142,26 +146,80 @@ const OrderDetail = () => {
         style={borderRadiusStyle}
         >
         <VStack p="7" space="xs">
-          <Pressable
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            {({ pressed }) => (
+          <Stack direction={'row'} >
+            <Pressable
+              flex={1}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              {({ pressed }) => (
+                <Box
+                  color={pressed ? 'gray.200' : 'white'}  
+                  p={3}
+                  borderRadius={50}  
+                  shadow={3}  
+                >
+                  <Icon
+                    as={<FontIcon name="reply" />}
+                    size={8}
+                    color={pressed ? "lightBlue.500" : "lightBlue.50"}
+                  />
+                </Box>
+              )}  
+            </Pressable>  
+            <Box
+              flexDirection={'row'}
+              alignItems="center"
+              justifyContent="center"
+              flex={1}
+              w={100}
+              >
               <Box
-                color={pressed ? 'gray.200' : 'white'}  
+                bg={'white'}  
+                p={3} 
+                borderRadius={50}  
+                shadow={3}  
+              >
+               <Icon
+                  as={<FontIcon name="user-md" />}
+                  size={6}
+                  color={"ff0"}
+                  style={{color: 'darkblue' }}
+                />
+              </Box>
+              <Text>  </Text>
+              <Box
+                bg={'white'}  
                 p={3}
                 borderRadius={50}  
                 shadow={3}  
               >
-                <Icon
-                  as={<FontIcon name="reply" />}
-                  size={8}
-                  color={pressed ? "lightBlue.500" : "lightBlue.50"}
+               <Icon
+                  as={<FontIcon name="map" />}
+                  size={6}
+                  color={"ff0"}
+                  style={{color: 'orange' }}
                 />
               </Box>
-            )}  
-          </Pressable>  
+              <Text>  </Text>
+              <Box
+                bg={'white'}  
+                p={3}
+                borderRadius={50}  
+                shadow={3}  
+              >
+               <Icon
+                  as={<FontIcon name="phone" />}
+                  size={6}
+                  color={"ff0"}
+                  style={{color: 'red' }}
+                />
+              </Box>
+
+                
+            </Box>
+          </Stack>
           <Heading size="xl" color="lightBlue.50" fontWeight="bold">
             {orderData.customer_name}
           </Heading>
@@ -181,12 +239,12 @@ const OrderDetail = () => {
               // alignItems="center"
               justifyContent="center"
               width="100%"
-              position="absolute" // 将 HStack 相对于父容器进行绝对定位
-              left={0} // 调整左侧位置
-              right={0} // 调整右侧位置
-              bottom={0} // 调整底部位置
-              top={0} // 调整顶部位置
-              zIndex={3}  // 设置 z-index
+              position="absolute"
+              left={0}
+              right={0}
+              bottom={0}
+              top={0}
+              zIndex={3}  
             >
               <Box
                 p={4}

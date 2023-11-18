@@ -15,6 +15,10 @@ import {Dimensions, Pressable} from 'react-native';
 import FontIcon from 'react-native-vector-icons/FontAwesome';
 import {TabView} from 'react-native-tab-view';
 import OrderCard from './OrderCard';
+import DoneIndexPage from '../../component/OrderScreen/DoneOrder/index';
+
+import {selectTabRoutes} from '../../store/tabRouteSlice';
+import { useSelector } from 'react-redux';
 
 const MainPage = () => {
   const [index, setIndex] = React.useState(0);
@@ -25,15 +29,21 @@ const MainPage = () => {
     },
     {
       key: 'second',
-      title: '已退單',
+      title: '已完成',
     },
     {
       key: 'third',
-      title: '已完成',
+      title: '其他',
     },
   ]);
-  const renderTabBar = (props: {navigationState: {routes: any[]}}) => {
+  const tabRoutes = useSelector(selectTabRoutes);
+
+  const renderTabBar = (props: {navigationState: {}}) => {
     return (
+      <>
+       {tabRoutes.map(route => {
+        console.log(route.key, route.title);
+      })}
       <Box
         flexDirection="row"
         bgColor="muted.50"
@@ -45,7 +55,8 @@ const MainPage = () => {
         shadow={3}
         // minH={70}
       >
-        {props.navigationState.routes.map((route, i) => {
+       
+        {tabRoutes.map((tabRoutes, i) => {
           const color =
             index === i
               ? useColorModeValue('#fff', '#e5e5e5')
@@ -78,13 +89,14 @@ const MainPage = () => {
                     paddingTop: 2,
                   }}
                 >
-                  {route.title}
+                  {tabRoutes.title}
                 </Text>
               </Pressable>
             </Box>
           );
         })}
       </Box>
+      </>
     );
   };
   // eslint-disable-next-line react/no-unstable-nested-components
@@ -98,9 +110,14 @@ const MainPage = () => {
   };
   const renderScene = SceneMap({
     first: OrderCard,
-    second: SecondRoute,
+    second: DoneIndexPage,
     third: SecondRoute,
   });
+
+  const borderRadiusStyle = {
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  };
 
   return (
     <>
@@ -115,10 +132,10 @@ const MainPage = () => {
         bg="#005EB4"
         minH={Platform.OS === 'android' ? 240 : 250}
         pt={Platform.OS === 'android' ? '7' : '9'}
-        rounded="2xl">
+        style={borderRadiusStyle}>
         <Stack p="7" space="xs">
           <Heading size="xl" color="lightBlue.50" fontWeight="bold">
-            接單區
+            接單區 
           </Heading>
           <Text fontSize="xl" color="lightBlue.50" fontWeight="bold">
             今日已派送 10 個訂單
@@ -154,7 +171,7 @@ const MainPage = () => {
       <TabView
         navigationState={{
           index,
-          routes,
+          routes: tabRoutes,
         }}
         swipeEnabled={false}
         renderScene={renderScene}
