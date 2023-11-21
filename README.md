@@ -1,79 +1,85 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# TS專案建置
 
-# Getting Started
+# Steps
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+📑 **官方文檔：**
 
-## Step 1: Start the Metro Server
+[使用 TypeScript · React Native 中文网](https://reactnative.cn/docs/typescript)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+---
 
-To start Metro, run the following command from the _root_ of your React Native project:
+ℹ️ **相關套件版本資訊：**
+
+1. node.js：18.14.0
+2. npx：9.3.1
+3. ruby：2.6.1
+
+---
+
+✏️ **指令：**
+
+1. **Remove RN 的 cli package**
+    - -g : 全域性的刪除這個 package
+    
+    ```bash
+    npm uninstall -g react-native-cli
+    ```
+    
+    <aside>
+    ⚠️ **官方Note：**
+    如果以上命令失敗，則可能是您的 PC 上全局安裝了舊版本的react-native或react-native-cli。 嘗試卸載 cli 並使用npx運行 cli.
+    
+    </aside>
+    
+2. **Install 專案**
+    - {**proj_name**}：用要 **小駝峰式 (camelCase)** 命名
+    
+    ```bash
+    npx react-native init {**proj_name**} --template react-native-template-typescript
+    ```
+    
+- **補充：執行專案**
+    - 要 cd 專案資料夾
+    - { android/ios } ：擇一
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
+npx react-native run-{android/ios} 
+# 官方
 yarn ios
+# 或者
+yarn react-native run-ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+---
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+**🎉 執行結果參考：**
 
-## Step 3: Modifying your App
+![截圖 2023-11-02 下午4.01.16.png](TS%E5%B0%88%E6%A1%88%E5%BB%BA%E7%BD%AE%201e5400baee864974b162fdce497ba67b/%25E6%2588%25AA%25E5%259C%2596_2023-11-02_%25E4%25B8%258B%25E5%258D%25884.01.16.png)
 
-Now that you have successfully run the app, let's modify it.
+# Error 解決參考
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+**Watchman相關**
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+**方法：**
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+1. 關掉目前虛擬機
+2. 進入 ios / android 
+    
+    `cd ios / android` 
+    
+3. 用cocopads 執行套件
+    
+    `pod install`
+    
+4. 回專案資料夾重新執行
+    
+    `cd ../`
+    
+    `npz react-native run-ios/android`
+    
+    <aside>
+    💡 若不行，請試試以下方法
+    1. 進入虛擬手機後，回「虛擬手機」主畫面手動關掉執行中APP，再重新點開
+    2. 確認沒有錯誤的引用的code/lib ，或先command掉
+    
+    </aside>
